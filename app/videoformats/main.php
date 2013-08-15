@@ -15,7 +15,7 @@ window.onload = function() {
 };
 function handleKeyCode(kc) {
   if (kc==VK_RED) {	
-	document.location.href = './menu.php';
+	document.location.href = './menu.html';
     return true;
   }
   return false;
