@@ -78,36 +78,23 @@ var playpausecode = -1;
 var nextidx = 0;
 var isVisible = true;
 
+// TODO : Insert your media file at each switch-case.
 function getVideoUrlByIndex(i) {
   i *= 1;
   switch (i) {
     case 0: // header
     case 1:
-      return "http://wams.edgesuite.net/media/SintelTrailer_MP4_from_WAME/sintel_trailer-1080p.ism/manifest(format=mpd-time-csf)";
+      return "http://www.videourl.com/mime.ts";
     case 2:
-      return "http://wams.edgesuite.net/media/SintelTrailer_Smooth_from_WAME/sintel_trailer-1080p.ism/manifest(format=mpd-time-csf)";
-    case 3:
-      return "http://wams.edgesuite.net/media/SintelTrailer_Smooth_from_WAME_720p_Main_Profile/sintel_trailer-720p.ism/manifest(format=mpd-time-csf)";
+      return "http://mediaurl2";
+    case 3: //header 720
     case 4:
-      return "http://wams.edgesuite.net/media/MPTExpressionData01/ElephantsDream_1080p24_IYUV_2ch.ism/manifest(format=mpd-time-csf)";
-    case 5:
-      return "http://wams.edgesuite.net/media/MPTExpressionData02/BigBuckBunny_1080p24_IYUV_2ch.ism/manifest(format=mpd-time-csf)";
-    case 6: //header 720
-    case 7:
         return "http://wams.edgesuite.net/media/SintelTrailer_Smooth_from_WAME_720p_Main_Profile_CENC/CENC/sintel_trailer-720p.ism/manifest(format=mpd-time-csf)";
-    case 8:
-        return "http://wams.edgesuite.net/media/SintelTrailer_Smooth_from_WAME_720p_Main_Profile_CENC/NoSubSampleAdjustment/sintel_trailer-720p.ism/manifest(format=mpd-time-csf)"
-    case 9: 
-        return "http://wams.edgesuite.net/media/SintelTrailer_Smooth_from_WAME_720p_Main_Profile_CENC/NoSubSampleAdjustmentNoSenc/sintel_trailer-720p.ism/manifest(format=mpd-time-csf)"
-    case 10://header 1080
-    case 11:
-        return "http://wams.edgesuite.net/media/SintelTrailer_Smooth_from_WAME_CENC/CENC/sintel_trailer-1080p.ism/manifest(format=mpd-time-csf)"
-    case 12:
-        return "http://wams.edgesuite.net/media/SintelTrailer_Smooth_from_WAME_CENC/NoSubSampleAdjustment/sintel_trailer-1080p.ism/manifest(format=mpd-time-csf)" 
-    case 13:
-        return "http://wams.edgesuite.net/media/SintelTrailer_Smooth_from_WAME_CENC/NoSubSampleAdjustmentNoSenc/sintel_trailer-1080p.ism/manifest(format=mpd-time-csf)"
+    case 5://header 1080
+    case 6:
+        return "http://mediaurl3"
     default:
-        return "http://wams.edgesuite.net/media/SintelTrailer_Smooth_from_WAME_CENC/NoSubSampleAdjustmentNoSenc/sintel_trailer-1080p.ism/manifest(format=mpd-time-csf)"
+        return "http://mediaurl"
       break;
   }
 }
@@ -266,13 +253,13 @@ function playVideo(mtype, murl, registerlistener) {
 
 function toggleAppVisible(){
   var curAppMgr = document.getElementById('appmgr').getOwnerApplication(document);
-  if(isVisible){
+  if (isVisible) {
     runStep('stop');
     var elem = document.getElementById('vidcontainer');
     elem.innerHTML = '';
     curAppMgr.hide();
     isVisible = false;
-  }else{
+  } else {
     curAppMgr.show();
     playVideo('application/dash+xml', getVideoUrlByIndex(getParameterByName('video_idx')), true);
     mainVideo.init();
