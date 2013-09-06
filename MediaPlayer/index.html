@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//HbbTV//1.1.1//EN" "http://www.hbbtv.org/dtd/HbbTV-1.1.1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>LG HbbTV</title>
+<meta http-equiv="content-type" content="Content-Type: application/vnd.hbbtv.xhtml+xml; charset=UTF-8" />
+<script type="text/javascript" src="js/keycodes.js"></script>
+<script type="text/javascript" src="js/base.js"></script>
+<script type="text/javascript">
+//<![CDATA[
+var req = false;
+
+window.onload = function() {
+  registerKeyEventListener();
+  initApp();
+};
+function handleKeyCode(kc) {
+  if (kc==VK_RED) {
+    document.location.href = './menu.html';
+    return true;
+  }
+  return false;
+};
+
+//]]>
+</script>
+</head>
+
+<body>
+<object id="appmgr" type="application/oipfApplicationManager" style="position: absolute; left: 0px; top: 0px; width: 0px; height: 0px;"></object><object id="oipfcfg" type="application/oipfConfiguration" style="position: absolute; left: 0px; top: 0px; width: 0px; height: 0px;"></object><div style="left: 0px; top: 0px; width: 1280px; height: 720px;position:absolute;">
+  <img src="redbutton.gif" style="right:40px;bottom:20px;position:absolute;width:200px"/>
+</div>
+
+</body>
+</html>

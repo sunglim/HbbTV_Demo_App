@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//HbbTV//1.1.1//EN" "http://www.hbbtv.org/dtd/HbbTV-1.1.1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>LG HbbTV</title>
+<meta http-equiv="content-type" content="Content-Type: application/vnd.hbbtv.xhtml+xml; charset=UTF-8" />
+<link rel="stylesheet" type="text/css" href="css/base.css" />
+<script type="text/javascript" src="js/keycodes.js"></script>
+<script type="text/javascript" src="js/base.js"></script>
+<script type="text/javascript">
+//<![CDATA[
+function isHeaderIndex(i) {
+  return opts[i].className == 'nav-header';
+}
+
+function menuSelect(i,isUp) {
+  if (isHeaderIndex(i)) {
+    if (isUp) {
+      i = i-1;
+    }else{
+      i = i+1;
+    }
+  }
+
+  if (i<=0) {
+    i = 0;
+  } else if (i>=opts.length) {
+    i = opts.length-1;
+  }
+  selected = i;
+  var scroll = Math.max(0, Math.min(opts.length-13, selected-6));
+  for (i=0; i<opts.length; i++) {
+    if (selected == i) {
+      jopts.eq(i).addClass("active");
+    }else{
+      jopts.eq(i).removeClass("active");
+    }
+  } 
+}
+
+window.onload = function() {
+  opts = document.getElementById('menu').getElementsByTagName('li');
+  jopts = $("#menu").find("li");
+  menuSelect(0,false);
+  registerKeyEventListener();
+  initApp();
+};
+function handleKeyCode(kc) {
+  /*
+  if(kc==VK_RED) {
+    toggleAppVisible();
+    return true;
+  }
+  if(!isVisible){
+    return false;
+  }
+  if (kc==VK_UP) {
+    menuSelect(selected-1,true);
+    return true;
+  } else if (kc==VK_DOWN) {
+    menuSelect(selected+1,false);
+    return true;
+  } else if (kc==VK_ENTER) {
+    var liid = opts[selected].getAttribute('name');
+    if (liid=='exit') {
+      document.location.href = '../index.php';
+    } else {
+      runStep(liid);
+    }
+    return true;
+  }
+  */
+  return false;
+}
+
+function runStep(name){
+  document.location.href = 'dash.html?video_idx=' + selected 
+};
+
+function toggleAppVisible(){
+  var curAppMgr = document.getElementById('appmgr').getOwnerApplication(document);
+  if (isVisible) {
+    curAppMgr.hide();
+    isVisible = false;
+  } else {
+    curAppMgr.show();
+    isVisible = true;
+  }
+};
+
+//]]>
+</script>
+
+<body>
+<div style="margin:0px;padding:0px;position:absollte;left: 0px; top: 0px; width: 1280px; height: 720px; background-image: url('background.jpg');" />
+
+<object id="appmgr" type="application/oipfApplicationManager" style="position: absolute; left: 0px; top: 0px; width: 0px; height: 0px;"></object>
+<object id="oipfcfg" type="application/oipfConfiguration" style="position: absolute; left: 0px; top: 0px; width: 0px; height: 0px;"></object>
+
+  <ul id="menu" class="nav nav-list" style="padding-top:100px;text-align:center">
+    <li class="nav-header">Clear content</li>
+    <li class="active"><a href="#">Video1</a></li>
+    <li><a href="#">Video2</a></li>
+    <li><a href="#">Video3</a></li>
+    <li><a href="#">Video4</a></li>
+    <li><a href="#">Video5</a></li>
+    <li class="nav-header">720p, BaselineProfile</li>
+    <li><a href="#">Video6</a></li>
+    <li><a href="#">Video7</a></li>
+    <li><a href="#">Video8</a></li>
+    <li><a href="#">Video9</a></li>
+    <li class="nav-header">1080p, HeighProfile</li>
+    <li><a href="#">Video10</a></li>
+    <li><a href="#">Video11</a></li>
+    <li><a href="#">Video12</a></li>
+  </ul>
+<script src="http://code.jquery.com/jquery.js"></script>
+</body>
+</html>
