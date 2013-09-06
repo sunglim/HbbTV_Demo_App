@@ -261,7 +261,11 @@ function toggleAppVisible(){
     isVisible = false;
   } else {
     curAppMgr.show();
-    playVideo('application/dash+xml', getVideoUrlByIndex(getParameterByName('video_idx')), true);
+    // TODO : The mimetype is depending on the type of media file.
+    // Maybe video/mpeg  is mostly fine.
+    playVideo('video/mpeg', getVideoUrlByIndex(getParameterByName('video_idx')), true);
+    //playVideo('application/dash+xml', getVideoUrlByIndex(getParameterByName('video_idx')), true);
+    //playVideo('video/mpeg4', getVideoUrlByIndex(getParameterByName('video_idx')), true);
     mainVideo.init();
     isVisible = true;
   }
